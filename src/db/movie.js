@@ -48,18 +48,22 @@ class Movie{
           util.log(`ERROR: ${err.message}`);
           reject(err);
         }
-        let url = `${omdbUrl}${row.imdbId}`
-        requestor(url).then(data => {
-          row.ratings = {
-            "db": null,
-            "metascore": data.Metascore,
-            "imdb": data.imdbRating
-          }
-          resolve(row);
-        }).catch(err => {
-          util.log(`ERROR: ${err}`);
-          reject(`ERROR: ${err}`)
-        })
+        if (row){
+          let url = `${omdbUrl}${row.imdbId}`
+          requestor(url).then(data => {
+            row.ratings = {
+              "db": null,
+              "metascore": data.Metascore,
+              "imdb": data.imdbRating
+            }
+            resolve(row);
+          }).catch(err => {
+            util.log(`ERROR: ${err}`);
+            reject(`ERROR: ${err}`)
+          })
+        } else {
+          resolve();
+        }
       })
     })
   }

@@ -85,20 +85,20 @@ describe('MOVIES', () => {
           keys.should.include('releaseDate')
           keys.should.include('budget')
           keys.should.include('overview')
-          keys.should.include('averageRating')
+          keys.should.include('ratings')
           keys.should.include('productionCompanies')
           keys.should.include('language')
           done();
         })
     })
 
-    it('it should NOT GET any data for movie ID 1', (done) => {
+    it('it should NOT GET any data for movie ID foo', (done) => {
       chai.request(app)
-        .get('/api/v1/movies/1')
+        .get('/api/v1/movies/foo')
         .end((err, res) => {
           if (err) util.log(`TEST ERROR: ${err}`)
           res.should.have.status(404);
-          res.body.data.should.be.eql('Movie not found with ID 1');
+          res.body.data.should.be.eql('Movie not found by ID foo.');
           done()
         })
     })

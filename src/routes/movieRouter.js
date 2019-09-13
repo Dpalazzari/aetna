@@ -2,7 +2,7 @@
 const util = require('util');
 const { Movie } = require('../db/movie');
 const { Rating } = require('../db/rating');
-const { formatResponse, formatBudgetValues, averageRating } = require('../helpers/helpers');
+const { formatResponse, formatBudgetValues } = require('../helpers/helpers');
 
 // ceb9bf8c
 
@@ -44,7 +44,7 @@ module.exports = (app) => {
     const movieId = parseInt(req.params.id);
     const resObj = formatResponse();
     if (!Number.isInteger(movieId)){
-      resObj.data = `Movie not found by id ${req.params.id}`;
+      resObj.data = `Movie not found by ID ${req.params.id}.`;
       res.status(404).send(resObj);
     }
     try {
