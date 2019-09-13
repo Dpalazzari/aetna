@@ -1,5 +1,16 @@
 # Movie API Code Test
 
+### Start up scripts
+
+1) Run the app in development
+```npm run start```
+2) Run the tests
+```npm run test```
+3) Run in Debug
+```npm run debug```
+4) Run the tests in debug
+```npm run debug:test```
+
 ## Pre-requisites
 
 * An IDE or text editor of your choice
